@@ -1,3 +1,4 @@
+% Below are for replicating the researchers' work
 % for test
 beta = 0.002
 gamma = 0.01
@@ -15,6 +16,58 @@ xlabel('Days', FontSize=12)
 ylabel('Population', Fontsize = 12)
 legend('S', 'I', 'R', fontsize = 12)
 
+% Regina George
+beta = 0.03
+gamma = 0.1
+rho = 0.2
+alpha = 0
+
+syms S(t) I(t) R(t)
+f = @(t, x) [-beta.*x(1).*x(2); rho * beta.*x(1).*x(2) - gamma.*x(2) ...
+    + alpha.*x(3); gamma.*x(2) - alpha.*x(3) + (1- rho)*beta.*x(1).*x(2)];
+[t, xa] = ode45(f, [0 7], [999 1 -1])
+plot(t,xa(:, 1), t, xa(:, 2), t, xa(:, 3), "LineWidth", 3)
+
+title("The spread of Regina George's Lie", FontSize=12)
+xlabel('Days', FontSize=12)
+ylabel('Population', Fontsize = 12)
+legend('S', 'I', 'R', fontsize = 12)
+
+% Dr. Neverheardofher
+beta = 0.0001
+gamma = 0.00001
+rho = 0.99
+alpha = 0
+
+syms S(t) I(t) R(t)
+f = @(t, x) [-beta.*x(1).*x(2); rho * beta.*x(1).*x(2) - gamma.*x(2) ...
+    + alpha.*x(3); gamma.*x(2) - alpha.*x(3) + (1- rho)*beta.*x(1).*x(2)];
+[t, xa] = ode45(f, [0 365], [999 1 -1])
+plot(t,xa(:, 1), t, xa(:, 2), t, xa(:, 3), "LineWidth", 3)
+
+title("The spread of Dr. Neverheardofher's Lie", FontSize=12)
+xlabel('Days', FontSize=12)
+ylabel('Population', Fontsize = 12)
+legend('S', 'I', 'R', fontsize = 12)
+
+% the Conwoman
+beta = 0.003
+gamma = 0.001
+rho = 0.7
+alpha = 0.009
+
+syms S(t) I(t) R(t)
+f = @(t, x) [-beta.*x(1).*x(2); rho * beta.*x(1).*x(2) - gamma.*x(2) ...
+    + alpha.*x(3); gamma.*x(2) - alpha.*x(3) + (1- rho)*beta.*x(1).*x(2)];
+[t, xa] = ode45(f, [0 31], [999 1 -1])
+plot(t,xa(:, 1), t, xa(:, 2), t, xa(:, 3), "LineWidth", 3)
+
+title("The spread of the Conwoman's Lie", FontSize=12)
+xlabel('Days', FontSize=12)
+ylabel('Population', Fontsize = 12)
+legend('S', 'I', 'R', fontsize = 12)
+
+% Below are for adjusting the parameters to demonstrate my own effort
 % Regina Griffindor
 beta = 0.05
 gamma = 0.2
